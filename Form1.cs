@@ -9,13 +9,14 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using System.Threading;
-using FastTreeNS;
+//using FastTreeNS;
 
 namespace IDEEEEEEEEEEEEEEEEEEE
 {
     public partial class Form1 : Form
     {
-        int t; 
+        int t;
+        public string s { get; set; }
         public Form1()
         {
             InitializeComponent();
@@ -45,6 +46,9 @@ namespace IDEEEEEEEEEEEEEEEEEEE
 
         private void button4_Click(object sender, EventArgs e)
         {
+            StreamReader streamReader1 = new StreamReader("tem.txt");
+            t = streamReader1.Read();
+            streamReader1.Close();
             t *= -1;
             System.IO.File.Delete("tem.txt");
             StreamWriter zn;  //Класс для записи в файл
@@ -57,13 +61,26 @@ namespace IDEEEEEEEEEEEEEEEEEEE
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //saveFileDialog1.FileName = openFileDialog1.FileName;
-            saveFileDialog1.ShowDialog();
+            saveFileDialog1.ShowDialog(this);
+            s = saveFileDialog1.FileName;
+            FileStream? fstream = null;
+            fstream = new FileStream(s, FileMode.OpenOrCreate);
+            fstream?.Close();
+
+            Form2 frm2 = new Form2();
+            frm2.frm1 = this;
+            frm2.Show();
+            this.Hide();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-
+            openFileDialog1.ShowDialog();
+            s = openFileDialog1.FileName;
+            Form2 frm2 = new Form2();
+            frm2.frm1 = this;
+            frm2.Show();
+            this.Hide();
         }
 
         private void button3_Click(object sender, EventArgs e)
