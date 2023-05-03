@@ -15,18 +15,18 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 
 namespace IDEEEEEEEEEEEEEEEEEEE
 {
-    public partial class Form2 : Form
+    public partial class Form3 : Form
     {
         public Form1 frm1 { get; set; }
         string q, q1 = "", q2;
         char sl = '\\';
         int t, ch = 0;
-        public Form2()
+        public Form3()
         {
             InitializeComponent();
         }
 
-        private void Form2_Load(object sender, EventArgs e)
+        private void Form3_Load(object sender, EventArgs e)
         {
             StreamReader streamReader1 = new StreamReader("tem.txt");
             t = Int32.Parse(streamReader1.ReadLine());
@@ -70,10 +70,10 @@ namespace IDEEEEEEEEEEEEEEEEEEE
                 richTextBox1.BackColor = Color.White;
                 richTextBox1.ForeColor = Color.Black;
             }
-            StreamReader docOp = new StreamReader(frm1.s);
-            richTextBox1.Text = docOp.ReadToEnd();
-            docOp.Close();
-            lab();
+            //StreamReader docOp = new StreamReader(frm1.s);
+            //richTextBox1.Text = docOp.ReadToEnd();
+            //docOp.Close();
+            //lab();
             //openFileDialog1.Filter = "Файлы кода (*.cs)|*.cs|All files (*.*)|*.*";
             saveFileDialog1.Filter = "Файлы кода (*.cs)|*.cs|All files (*.*)|*.*";
         }
@@ -155,14 +155,6 @@ namespace IDEEEEEEEEEEEEEEEEEEE
 
         private void закрытьToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            System.Windows.Forms.DialogResult result, result1;
-            result = MessageBox.Show("Сохранить файл?", "Сохранение файла", MessageBoxButtons.YesNo);
-            if (result == System.Windows.Forms.DialogResult.Yes)
-            {
-                StreamWriter docWR = new StreamWriter(frm1.s);
-                docWR.WriteLine(richTextBox1.Text);
-                docWR.Close();
-            }
             this.Close();
             frm1.Close();
         }

@@ -47,7 +47,7 @@ namespace IDEEEEEEEEEEEEEEEEEEE
         private void button4_Click(object sender, EventArgs e)
         {
             StreamReader streamReader1 = new StreamReader("tem.txt");
-            t = streamReader1.Read();
+            t = Int32.Parse(streamReader1.ReadLine());
             streamReader1.Close();
             t *= -1;
             System.IO.File.Delete("tem.txt");
